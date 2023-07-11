@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:gif_app/presentation/providers/gifs_provider.dart';
+import 'package:gif_app/presentation/widgets/gifs/gifs_item.dart';
 import 'package:gif_app/presentation/widgets/shared/gifs_field.dart';
 import 'package:provider/provider.dart';
 
@@ -34,12 +35,17 @@ class _GifsView extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: 20,
+                padding: EdgeInsets.zero,
+                itemCount: gifsProvider.gifs.length,
                 itemBuilder: (context, index) {
-                  return const Placeholder(); 
+                  final gif = gifsProvider.gifs[index]; 
+                  return GifsItem(
+                    gifUrl: gif.imageUrl
+                  );
                 },
               ),
             ),
+
             GifsFiel(
               onValue: gifsProvider.searchGifs,
             )

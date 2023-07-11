@@ -9,5 +9,10 @@ class GifsProvider extends ChangeNotifier {
   Future<void> searchGifs(String text) async {
     if(text.trim() == "") return; 
     final getGifs = await GetGifs().getGif(text); 
+    
+    gifs = getGifs;
+    notifyListeners(); 
   }
+
+
 }
